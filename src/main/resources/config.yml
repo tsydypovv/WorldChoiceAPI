@@ -1,0 +1,35 @@
+# Настройки для WorldChoicePlugin
+
+# Данные о выбранных мирах будут сохраняться в формате:
+# players:
+#   <UUID игрока>:
+#     world: world1|world2
+#     name: <имя игрока>
+#     chosenAt: <timestamp>
+#     changedBy: <имя админа>
+#     changedAt: <timestamp>
+
+# Настройки первого мира
+world1:
+  name: "first"
+  description: "first world"
+  spawn:
+    x: 0
+    y: 70
+    z: 0
+    yaw: 0
+    pitch: 0
+
+# Настройки второго мира
+world2:
+  name: "second"
+  description: "second world"
+  spawn:
+    x: 0
+    y: 70
+    z: 0
+    yaw: 0
+    pitch: 0
+
+# Данные о выборе миров игроками будут сохраняться здесь
+players:

@@ -1,0 +1,29 @@
+name: WorldChoicePlugin
+version: '${project.version}'
+main: me.m1ran.worldchoiceplugin.WorldChoicePlugin
+api-version: '1.21'
+commands:
+  chooseworld:
+    description: Выбрать мир для игры
+    usage: /chooseworld [1|2]
+  setspawn:
+    description: Установить точку спавна для мира
+    usage: /setspawn [1|2]
+    permission: worldchoice.admin
+  changeworldfor:
+    description: Изменить выбранный мир для игрока
+    usage: /changeworldfor <имя_игрока> <1|2>
+    permission: worldchoice.admin
+  worldchoice-reload:
+    description: "Перезагружает конфигурацию и команды плагина"
+    usage: "/wpvp-reload"
+    permission: "worldchoice.admin"  # Требует права администратора
+    aliases:
+      - wcr
+      - wcreload
+
+
+permissions:
+  worldchoice.admin:
+    description: Доступ к административным командам плагина
+    default: op

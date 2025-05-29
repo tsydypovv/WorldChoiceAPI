@@ -1,0 +1,24 @@
+#  world:               # Название команды = название мира
+#   friendly-fire: false
+#   see-invisible: true
+#   prefix: "&a[Мир] "
+#   members:           # Игроки в команде (опционально)
+#     - Player1
+#     - Player2
+#
+#  nether:
+#   friendly-fire: true
+#   see-invisible: false
+#   prefix: "&c[Ад] "
+#   members: []
+
+teams:
+  first:
+    see-invisible: true
+    prefix: "§b[first] "
+    members:
+
+  second:
+    see-invisible: true
+    prefix: "§b[second] "
+    members:
