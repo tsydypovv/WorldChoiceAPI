@@ -319,6 +319,11 @@ public class WorldChoicePlugin extends JavaPlugin implements Listener, WorldChoi
         return this.scoreboard;
     }
 
+    @Override
+    public Scoreboard getNewScoreboard() {
+        return Bukkit.getScoreboardManager().getNewScoreboard();
+    }
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         teamManager.assignPlayerToTeam(event.getPlayer());

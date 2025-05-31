@@ -37,6 +37,12 @@ public interface WorldChoiceAPI {
      */
     Scoreboard getScoreboard();
 
+    /**
+     * Создает и возвращает новый пустой Scoreboard.
+     * @return новый Scoreboard
+     */
+    Scoreboard getNewScoreboard();
+
     Location getWorldSpawn1();
     Location getWorldSpawn2();
 
