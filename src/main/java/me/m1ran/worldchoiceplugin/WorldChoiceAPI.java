@@ -2,6 +2,7 @@ package me.m1ran.worldchoiceplugin;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Scoreboard;
 
 /**
  * Интерфейс API для плагина WorldChoice
@@ -29,6 +30,12 @@ public interface WorldChoiceAPI {
      * @return true если операция выполнена успешно
      */
     boolean setPlayerWorld(Player player, String worldChoice);
+
+    /**
+     * Получить общий scoreboard, используемый плагином.
+     * @return Scoreboard для отображения команд и префиксов
+     */
+    Scoreboard getScoreboard();
 
     Location getWorldSpawn1();
     Location getWorldSpawn2();

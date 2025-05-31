@@ -23,6 +23,7 @@ public class TeamManager {
 
     public TeamManager(WorldChoicePlugin plugin) {
         this.plugin = plugin;
+        this.scoreboard = plugin.getScoreboard();
         loadTeams();
     }
 
@@ -47,7 +48,7 @@ public class TeamManager {
 
     // Настройка всех команд
     public void setupTeams() {
-        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+
         ConfigurationSection teamsSection = teamsConfig.getConfigurationSection("teams");
 
         if (teamsSection == null) {
@@ -111,18 +112,19 @@ public class TeamManager {
 
     // Добавляет одного игрока в команду по его выбранному миру
     public void assignPlayerToTeam(Player player) {
-        String world = plugin.getPlayerWorld(player); // ← реализуй этот метод в своем плагине
+
+        String world = plugin.getPlayerWorld(player); // Получаем выбранный мир игрока
 
         if (world == null || world.isEmpty()) return;
 
-        // Удаляем игрока из всех текущих команд
+        // Удаляем игрока из всех команд
         for (Team team : scoreboard.getTeams()) {
             if (team.hasEntry(player.getName())) {
                 team.removeEntry(player.getName());
             }
         }
 
-        // Назначаем в нужную команду
+        // Назначаем игрока в команду, соответствующую миру
         Team targetTeam = scoreboard.getTeam(world);
         if (targetTeam == null) {
             targetTeam = scoreboard.registerNewTeam(world);

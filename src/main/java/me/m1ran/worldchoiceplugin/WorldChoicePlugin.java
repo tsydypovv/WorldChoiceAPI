@@ -6,7 +6,9 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
@@ -34,8 +36,6 @@ public class WorldChoicePlugin extends JavaPlugin implements Listener, WorldChoi
         //Инициализация Scoreboard
         scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
 
-        this.teamManager = new TeamManager(this);
-
         teamManager = new TeamManager(this);
         teamManager.setupTeams(); // Восстанавливаем команды при запуске
         // Сохраняем конфиг по умолчанию, если он не существует
@@ -62,6 +62,10 @@ public class WorldChoicePlugin extends JavaPlugin implements Listener, WorldChoi
 
         // Регистрируем обработчики событий
         getServer().getPluginManager().registerEvents(new PlayerEventListener(this), this);
+
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            teamManager.assignPlayerToTeam(player);
+        }
 
         getLogger().info("WorldChoicePlugin enabled!");
     }
@@ -308,5 +312,15 @@ public class WorldChoicePlugin extends JavaPlugin implements Listener, WorldChoi
         float pitch = (float) getConfig().getDouble("world2.spawn.pitch");
         world1Spawn = new Location(world, x, y, z, yaw, pitch);
         return world2Spawn;
+    }
+
+    @Override
+    public Scoreboard getScoreboard() {
+        return this.scoreboard;
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        teamManager.assignPlayerToTeam(event.getPlayer());
     }
 }

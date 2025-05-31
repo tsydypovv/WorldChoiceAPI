@@ -2,6 +2,10 @@ name: WorldChoicePlugin
 version: '${project.version}'
 main: me.m1ran.worldchoiceplugin.WorldChoicePlugin
 api-version: '1.21'
+
+softdepend:
+  - Worlds
+
 commands:
   chooseworld:
     description: Выбрать мир для игры
